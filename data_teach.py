@@ -9,6 +9,7 @@ import random as rnd
 import matplotlib.pyplot as plt
 
 # create a 2d problem
+# would be nice to have different disributions, e.g normal, rayleigh etc.
 def create_data():
     n_classes = 2
     n_inputs = 100              # overall
