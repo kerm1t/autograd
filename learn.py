@@ -35,8 +35,8 @@ class LMS:
             print(f"k={k}, nu={self.nu}, a={self.a}, b={self.b}, y={y[k]}, tmp={tmp}, theta={self.theta}")
             y_k = Mat(y[k])
             # nu/k is getting smaller with every k-step
-            tmp = self.nu/k*y_k.matmul(self.b - self.a.matmul(y_k))
-            
+            tmp = (self.b - self.a.matmul(y_k)).matmul(y_k)*(self.nu/k)
+            tmp.pprint()
             # update weights now
             self.a = self.a + tmp
         return self.a
