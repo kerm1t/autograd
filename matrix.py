@@ -16,8 +16,11 @@ class Mat:
             mat.append([0]*cols)
         return Mat(mat)
     
+    # instance method
     def matmul(self, b): # not commutative
-        global res
+        print("Mat.matmul:")
+        self.pprint() # debug only
+        b.pprint()    # debug only
         colsA = len(self.rows[0])
         rowsB = len(b.rows)
         if (colsA == rowsB):
@@ -38,20 +41,39 @@ class Mat:
         print(type(self).__name__)
         for i in range(len(self.rows)):
             print(self.rows[i])
+            
+    def __sub__(self, b):
+        print("Mat.sub:")
+        self.pprint() # debug only
+        b.pprint()    # debug only
+        # 2do: check if both matrices have same dimensions
+        cols = len(self.rows[0])
+        rows = len(self.rows)
+        res = Mat.empty(rows,cols)
+        for i in range(rows):
+            for j in range(cols):
+                res.rows[i][j] = self.rows[i][j] - b.rows[i][j]
+        return res
 
-a = [[1,2,3],
-     [2,3,4]]
-b = [[2,2],
-     [3,3]]
-# above matrixes can only be multiplied b*a, but not a*b
-# number of cols of matrix 1 to be = number of rows of Matrix 2
-
-a = Mat([[1,2,3],[2,3,4]]) # 2,3 Matrix
-b = Mat([[2,2],[3,3]])
-#a.pprint()
-#b.pprint()
-
-c = a.matmul(b) # not possible
-c = b.matmul(a)
-
-c.pprint()
+if __name__ == '__main__':
+    a = [[1,2,3],
+         [2,3,4]]
+    b = [[2,2],
+         [3,3]]
+    # above matrixes can only be multiplied b*a, but not a*b
+    # number of cols of matrix 1 to be = number of rows of Matrix 2
+    
+    a = Mat([[1,2,3],[2,3,4]]) # 2,3 Matrix
+    b = Mat([[2,2],[3,3]])
+    #a.pprint()
+    #b.pprint()
+    
+    c = a.matmul(b) # not possible
+    c = b.matmul(a)
+    
+    c.pprint()
+    d = Mat([[-1,3],[0,2]])
+    e = d-b
+    e.pprint()
+    
+    
