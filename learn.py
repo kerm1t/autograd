@@ -17,8 +17,8 @@ from matrix import Mat
 class LMS:
     def __init__(self):
 # weights
-#        self.a = Mat([[5],[2]]) # arbitrary init
-        self.a = Mat([[5,2]]) # quick hack, should be a^t (transposed)
+        self.a = Mat([[5],[2]]) # arbitrary init
+#        self.a = Mat([[5,2]]) # quick hack, should be a^t (transposed)
 # bias(es?)
         self.b = Mat([[1],[1]]) # arbitrary margins
         self.theta = 1      # learn-end-criterion

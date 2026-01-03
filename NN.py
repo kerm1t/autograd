@@ -42,6 +42,6 @@ resi = create_data() # x,y,teach vectors
 num = len(resi[0])
 lms_in = [[[0],[0]]]*num
 for i in range(num):
-    lms_in[i] = [[resi[0][i]],[resi[1][i]]] # bit lenghty : rows, cols
+    lms_in[i] = [[resi[0][i],resi[1][i]]] # bit lenghty : rows, cols
 wiho = LMS() # least-mean-squared or widrow_hoff
 wiho.train(lms_in)
