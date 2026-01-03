@@ -31,5 +31,6 @@ def tester():
     n = neuron([1,2],1.5)
 
 
-n = neuron(weights=[1,2],bias=1.5)
-classe = n.process([1.1,4])
+if __name__ == '__main__':
+    n = neuron(weights=[1,2],bias=1.5)
+    classe = n.process([1.1,4])
