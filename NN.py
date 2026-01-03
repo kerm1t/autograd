@@ -19,3 +19,20 @@ for i in range(num):
     z[i] = n.process([x[i],y[i]])
     
 plt.scatter(x,y,c=z)
+
+# -----------------------------------------------
+# above doesn't work, need a much simpler example
+# -----------------------------------------------
+
+# 1 discrimination: y = 0.7x + 1
+# 1 input, class 1 or "true": x=1.2, y=1.7
+# 1 input, class 0 or "false": x=1.6, y=0.7
+
+n = neuron([1,0.7],bias=-1.1)
+num = 2
+x = [0]*num;x[0]=1.2;x[1]=1.6
+y = [0]*num;y[0]=1.7;y[1]=0.7
+z = [0]*num
+for i in range(num):
+    z[i] = n.process([x[i],y[i]])
+plt.scatter(x,y,c=z)
