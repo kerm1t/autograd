@@ -55,6 +55,30 @@ class Mat:
                 res.rows[i][j] = self.rows[i][j] - b.rows[i][j]
         return res
 
+    def __mul__(self, s):
+        print("Mat.mul w. scalar:")
+        cols = len(self.rows[0])
+        rows = len(self.rows)
+        res = Mat.empty(rows,cols)
+        for i in range(rows):
+            for j in range(cols):
+                res.rows[i][j] = self.rows[i][j]*s
+        return res
+
+    def __add__(self, b):
+        print("Mat.add:")
+        self.pprint() # debug only
+        b.pprint()    # debug only
+        # 2do: check if both matrices have same dimensions
+        cols = len(self.rows[0])
+        rows = len(self.rows)
+        res = Mat.empty(rows,cols)
+        for i in range(rows):
+            for j in range(cols):
+                res.rows[i][j] = self.rows[i][j] + b.rows[i][j]
+        return res
+
+
 if __name__ == '__main__':
     a = [[1,2,3],
          [2,3,4]]
