@@ -7,18 +7,19 @@ Created on Sat Jan  3 08:52:39 2026
 
 from data_teach import create_data
 from perceptron import neuron
+from learn import LMS
 import matplotlib.pyplot as plt
 
-resi = create_data()
-x = resi[0]
-y = resi[1]
-n = neuron([0.4,1.2],bias=-0.8) # kinda works for some random distributions
-num = len(resi[0])
-z = [0]*num
-for i in range(num):
-    z[i] = n.process([x[i],y[i]])
+# resi = create_data()
+# x = resi[0]
+# y = resi[1]
+# n = neuron([0.4,1.2],bias=-0.8) # kinda works for some random distributions
+# num = len(resi[0])
+# z = [0]*num
+# for i in range(num):
+#     z[i] = n.process([x[i],y[i]])
     
-plt.scatter(x,y,c=z)
+# plt.scatter(x,y,c=z)
 
 # -----------------------------------------------
 # above doesn't work, need a much simpler example
@@ -36,3 +37,11 @@ plt.scatter(x,y,c=z)
 # for i in range(num):
 #     z[i] = n.process([x[i],y[i]])
 # plt.scatter(x,y,c=z)
+
+resi = create_data() # x,y,teach vectors
+num = len(resi[0])
+lms_in = [[[0],[0]]]*num
+for i in range(num):
+    lms_in[i] = [[resi[0][i]],[resi[1][i]]] # bit lenghty : rows, cols
+wiho = LMS() # least-mean-squared or widrow_hoff
+wiho.train(lms_in)
