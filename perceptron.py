@@ -22,8 +22,11 @@ class neuron:
     def process(self, item):
         z = 0
         for i in range(self.n):
+#            print(f"item[{i}]={item[i]} * weight[{i}]={self.weight[i]}")
             z += item[i]*self.weight[i]
-        return (z+self.bias > 0)
+        print(f"z={z} / n={self.n} + bias={self.bias} > 0 ?")
+        print(f"result: {z/self.n + self.bias}")
+        return (z/self.n+self.bias > 0)
     
     
 #class perceptron:
