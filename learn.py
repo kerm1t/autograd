@@ -21,13 +21,15 @@ class LMS:
 #        self.a = Mat([[5,2]]) # quick hack, should be a^t (transposed)
 # bias(es?)
         self.b = Mat([[1],[1]]) # arbitrary margins
-        self.theta = 1      # learn-end-criterion
+#        self.theta = 1      # learn-end-criterion
+# theta need to be same dimension as input data
+        self.theta = Mat([[1],[1]])
         self.nu = 1         # any positive konstant
 #        self.k = 0
     
     def train(self,y):
         k = 0
-        tmp = 9999
+        tmp = Mat([[9999],[9999]])
         # do while error above learn-end-criterion
         print(f"k={k}, nu={self.nu}, a={self.a}, b={self.b}, y={y[k]}, tmp={tmp}, theta={self.theta}")
         while tmp > self.theta:
