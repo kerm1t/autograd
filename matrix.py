@@ -18,9 +18,9 @@ class Mat:
     
     # instance method
     def matmul(self, b): # not commutative
-        print("Mat.matmul:")
-        self.pprint() # debug only
-        b.pprint()    # debug only
+        # print("Mat.matmul:")
+        # self.pprint() # debug only
+        # b.pprint()    # debug only
         colsA = len(self.rows[0])
         rowsB = len(b.rows)
         if (colsA == rowsB):
@@ -43,9 +43,9 @@ class Mat:
             print(self.rows[i])
             
     def __sub__(self, b):
-        print("Mat.sub:")
-        self.pprint() # debug only
-        b.pprint()    # debug only
+        # print("Mat.sub:")
+        # self.pprint() # debug only
+        # b.pprint()    # debug only
         # 2do: check if both matrices have same dimensions
         cols = len(self.rows[0])
         rows = len(self.rows)
@@ -56,7 +56,7 @@ class Mat:
         return res
 
     def __mul__(self, s):
-        print("Mat.mul w. scalar:")
+        # print("Mat.mul w. scalar:")
         cols = len(self.rows[0])
         rows = len(self.rows)
         res = Mat.empty(rows,cols)
@@ -66,9 +66,9 @@ class Mat:
         return res
 
     def __add__(self, b):
-        print("Mat.add:")
-        self.pprint() # debug only
-        b.pprint()    # debug only
+        # print("Mat.add:")
+        # self.pprint() # debug only
+        # b.pprint()    # debug only
         # 2do: check if both matrices have same dimensions
         cols = len(self.rows[0])
         rows = len(self.rows)
@@ -76,6 +76,23 @@ class Mat:
         for i in range(rows):
             for j in range(cols):
                 res.rows[i][j] = self.rows[i][j] + b.rows[i][j]
+        return res
+
+    # example
+    # [1.0, 0.6] > [0.5,0.5] ? Yes
+    # [1.0, 0.3] > [0.5,0.5] ? No
+    def __gt__(self, b):
+        print("Mat.gt_than:")
+        self.pprint() # debug only
+        b.pprint()    # debug only
+        # 2do: check if both matrices have same dimensions
+        cols = len(self.rows[0])
+        rows = len(self.rows)
+        res = True
+        for i in range(rows):
+            for j in range(cols):
+                if (self.rows[i][j] < b.rows[i][j]):
+                    res = False
         return res
 
 
