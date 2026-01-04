@@ -97,24 +97,30 @@ class Mat:
 
 
 if __name__ == '__main__':
-    a = [[1,2,3],
-         [2,3,4]]
-    b = [[2,2],
-         [3,3]]
+    # a = [[1,2,3],
+    #      [2,3,4]]
+    # b = [[2,2],
+    #      [3,3]]
     # above matrixes can only be multiplied b*a, but not a*b
     # number of cols of matrix 1 to be = number of rows of Matrix 2
     
     a = Mat([[1,2,3],[2,3,4]]) # 2,3 Matrix
     b = Mat([[2,2],[3,3]])
-    #a.pprint()
-    #b.pprint()
     
     c = a.matmul(b) # not possible
     c = b.matmul(a)
     
+    # subtract test
     c.pprint()
     d = Mat([[-1,3],[0,2]])
     e = d-b
     e.pprint()
     
-    
+    # multiply n-by-d matrices
+    a = Mat([[1,2,-1]])     # 1x3 Matrix
+    b = Mat([[3],[0],[-2]]) # 3x1 Matrix
+    c = a.matmul(b)
+    c.pprint()
+    c = b.matmul(a)
+    c.pprint()
+
